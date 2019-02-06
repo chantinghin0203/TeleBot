@@ -21,9 +21,4 @@ def start(bot, update: Update):
 
 start_handler = CommandHandler('start', start)
 dispatcher.add_handler(start_handler)
-
-updater.start_webhook(listen="0.0.0.0",
-                      port=PORT,
-                      url_path=TOKEN)
-updater.bot.set_webhook("https://<appname>.herokuapp.com/" + TOKEN)
-updater.idle()
+updater.start_polling()
