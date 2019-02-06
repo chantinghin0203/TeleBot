@@ -5,5 +5,6 @@ from teleBot.domain.service.CommandLineService import CommandLineService
 
 dispatcher = updater.dispatcher
 commandLineService = CommandLineService()
-start_handler = CommandHandler('start', commandLineService.start_service)
-dispatcher.add_handler(start_handler)
+
+dispatcher.add_handler(CommandHandler('start', commandLineService.start_service))
+dispatcher.add_handler(CommandHandler(commandLineService.start_callback_service))
