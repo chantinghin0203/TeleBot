@@ -3,10 +3,19 @@ import os
 
 from telegram.ext import Updater
 
-TOKEN = "786280876:AAE7S9sEdzmnFcxff4otomvtYicy7JL8kuw"
-PORT = int(os.environ.get('PORT', '8443'))
+from teleBot.resource.applicationConfig import Config, ProdConfig
 
-updater = Updater(token=TOKEN)
+
+def get_config(param: str) -> Config:
+    if os.environ.get(param) is None:
+        return Config()
+    else:
+        return ProdConfig()
+
+
+CONFIG = get_config('APP_SETTINGS')
+
+updater = Updater(token=CONFIG.TOKEN)
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 
