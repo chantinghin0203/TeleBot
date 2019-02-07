@@ -1,1 +1,3 @@
 python-telegram-bot
+pandas-datareader
+fix-yahoo-finance
